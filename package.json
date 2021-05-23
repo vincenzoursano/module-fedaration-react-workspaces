@@ -4,27 +4,24 @@
     "./packages/*"
   ],
   "version": "0.1.0",
-  "description": "Starter kit for React, Webpack (with Hot Module Replacement), Typescript and Babel.",
+  "description": "Example project use webpack module federation with npm workspaces.",
   "keywords": [
     "react",
-    "webpack",
     "typescript",
-    "babel",
-    "sass",
-    "hmr",
-    "starter",
-    "boilerplate"
+    "webpack",
+    "module federation",
+    "npm workspaces"
   ],
   "author": "Viktor Persson",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vikpe/react-webpack-typescript-starter.git"
+    "url": "git+https://github.com/vincenzoursano/module-fedaration-react-workspaces.git"
   },
   "bugs": {
-    "url": "https://github.com/vikpe/react-webpack-typescript-starter/issues"
+    "url": "https://github.com/vincenzoursano/module-fedaration-react-workspaces/issues"
   },
-  "homepage": "https://github.com/vikpe/react-webpack-typescript-starter",
+  "homepage": "https://github.com/vincenzoursano/module-fedaration-react-workspaces",
   "scripts": {
     "build": "npm run clean-dist && webpack --config=configs/webpack/prod.js",
     "clean-dist": "rimraf dist/*",
