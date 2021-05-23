@@ -3,6 +3,9 @@ const { merge } = require("webpack-merge");
 const webpack = require("webpack");
 const commonConfig = require("./common");
 
+const path = require("path");
+const DIST_DIR = path.resolve(__dirname, `../../review`);
+
 module.exports = merge(commonConfig, {
   mode: "development",
   entry: [
@@ -12,7 +15,12 @@ module.exports = merge(commonConfig, {
     "./index.tsx", // the entry point of our app
   ],
   devServer: {
-    hot: true, // enable HMR on the server
+    contentBase: DIST_DIR,
+    host: "localhost",
+    port: 8080,
+    hot: true,
+    open: false,
+    writeToDisk: true
   },
   devtool: "cheap-module-source-map",
   plugins: [

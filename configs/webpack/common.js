@@ -1,6 +1,8 @@
 // shared config (dev and prod)
 const { resolve } = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const packageJsonDeps = require("../../package.json").devDependencies;
+const { ModuleFederationPlugin } = require("webpack").container;
 
 module.exports = {
   resolve: {
@@ -31,7 +33,31 @@ module.exports = {
       },
     ],
   },
-  plugins: [new HtmlWebpackPlugin({ template: "index.html.ejs" })],
+  plugins: [
+    new ModuleFederationPlugin({
+      name: "app",
+      library: { type: "var", name: "app" },
+      remotes: {
+        "example": "example"
+      },
+      shared: {
+        react: {
+          singleton: true,
+          eager: true,
+          requiredVersion: packageJsonDeps.react,
+        },
+        "react-dom": {
+          singleton: true,
+          eager: true,
+          requiredVersion: packageJsonDeps["react-dom"],
+        },
+      }
+    }),
+    new HtmlWebpackPlugin({ 
+      template: "index.html.ejs",
+      example: "./module-example/remoteEntry.js"
+    }),
+  ],
   externals: {
     react: "React",
     "react-dom": "ReactDOM",
