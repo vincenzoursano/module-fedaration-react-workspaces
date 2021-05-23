@@ -1,0 +1,3 @@
+[submodule "packages/module-example"]
+	path = packages/module-example
+	url = https://github.com/vincenzoursano/module-example-workspaces.git
